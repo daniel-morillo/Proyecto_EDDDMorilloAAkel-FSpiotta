@@ -26,6 +26,7 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
     public InterfazReporteAlmacenes(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public String recorridoDFS(Vertice startAlmacen, Grafo grafoWarehouse) {
@@ -125,6 +126,8 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         DFSTextArea = new javax.swing.JTextArea();
         VolverMenuButton = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -132,41 +135,54 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
+        BFSButton.setBackground(new java.awt.Color(204, 204, 204));
+        BFSButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         BFSButton.setText("RECORRIDO BFS");
         BFSButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BFSButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        getContentPane().add(BFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
+        BFSTextArea.setBackground(new java.awt.Color(204, 204, 204));
         BFSTextArea.setColumns(20);
         BFSTextArea.setRows(5);
         jScrollPane1.setViewportView(BFSTextArea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 200));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 310, 170));
 
+        DFSButton.setBackground(new java.awt.Color(204, 204, 204));
+        DFSButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         DFSButton.setText("RECORRIDO DFS");
         DFSButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DFSButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(DFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
+        getContentPane().add(DFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, -1));
 
+        DFSTextArea.setBackground(new java.awt.Color(204, 204, 204));
         DFSTextArea.setColumns(20);
         DFSTextArea.setRows(5);
         jScrollPane2.setViewportView(DFSTextArea);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 310, 200));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 310, 170));
 
-        VolverMenuButton.setText("VOLVER AL MENU");
+        VolverMenuButton.setBackground(new java.awt.Color(255, 153, 0));
+        VolverMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MENU.png"))); // NOI18N
         VolverMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverMenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(VolverMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, -1, -1));
+        getContentPane().add(VolverMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,7 +254,9 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
     private javax.swing.JTextArea BFSTextArea;
     private javax.swing.JButton DFSButton;
     private javax.swing.JTextArea DFSTextArea;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JToggleButton VolverMenuButton;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

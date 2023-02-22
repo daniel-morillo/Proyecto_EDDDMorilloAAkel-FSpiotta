@@ -22,6 +22,7 @@ public class InterfazAgregarAlmacen extends javax.swing.JFrame {
     public InterfazAgregarAlmacen(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
 
@@ -51,6 +52,8 @@ public class InterfazAgregarAlmacen extends javax.swing.JFrame {
         AgregarAlmacenButton = new javax.swing.JButton();
         MenuButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,63 +61,84 @@ public class InterfazAgregarAlmacen extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
+        TextAreaAlmacenNombre.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaAlmacenNombre.setColumns(20);
         TextAreaAlmacenNombre.setRows(5);
         jScrollPane1.setViewportView(TextAreaAlmacenNombre);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 100));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, 100));
 
+        TextAreaNuevosArcos.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaNuevosArcos.setColumns(20);
         TextAreaNuevosArcos.setRows(5);
         jScrollPane2.setViewportView(TextAreaNuevosArcos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, -1, 100));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, 100));
 
-        jLabel1.setText("Para ingresar un nuevo almacen, porfavor coloque el nombre que debe llevar el mismo ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setText("Para ingresar un nuevo almacen, por favor coloque el nombre que debe llevar el mismo ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
-        jLabel2.setText("en el recuadro de la izquierda (Debe ser una letra que no se encuentra en el grafo)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setText("en el recuadro de la izquierda (Debe ser una letra que no se encuentre en el grafo)");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
-        jLabel3.setText("y en el recuadro de la izquierda establezca dos nuevos arcos que involucren dicho almacen nuevo");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel3.setText("y en el recuadro de la derecha establezca dos nuevos arcos");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
 
-        jLabel4.setText("para que pueda ser creado");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel4.setText("que involucren dicho almacen nuevo para que pueda ser creado.");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel5.setText("INTRODUZCA NOMBRE DEL ALMACEN");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setText("Coloque solo la letra (Mayuscula) ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setText("INTRODUZCA LOS DOS ARCOS NUEVOS");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel8.setText("Estructura para aceptar los nuevos arcos en el programa --> ");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, 20));
 
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel9.setText("NombreAlmacenOrigen, NombreAlmacenDestino, distancia \\n");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, -1, 20));
 
+        AgregarAlmacenButton.setBackground(new java.awt.Color(204, 204, 204));
+        AgregarAlmacenButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         AgregarAlmacenButton.setText("AGREGAR ALMACEN");
         AgregarAlmacenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarAlmacenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarAlmacenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        getContentPane().add(AgregarAlmacenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, -1, -1));
 
-        MenuButton.setText("VOLVER AL MENU");
+        MenuButton.setBackground(new java.awt.Color(255, 153, 0));
+        MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MENU.png"))); // NOI18N
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, -1, -1));
+        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel10.setText("Las letras en mayusculas preferiblemente");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,11 +230,13 @@ public class InterfazAgregarAlmacen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarAlmacenButton;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton MenuButton;
     private javax.swing.JTextArea TextAreaAlmacenNombre;
     private javax.swing.JTextArea TextAreaNuevosArcos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
