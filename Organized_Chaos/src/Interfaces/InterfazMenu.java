@@ -27,6 +27,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     public InterfazMenu(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public void cargarArchivo(Grafo grafoWarehouse){
@@ -87,6 +88,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         GestionStockButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         ActualizarRepoButton = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,56 +96,81 @@ public class InterfazMenu extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
+        ReporteAlmacenesButton.setBackground(new java.awt.Color(204, 204, 204));
+        ReporteAlmacenesButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        ReporteAlmacenesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
         ReporteAlmacenesButton.setText("REPORTE DE DISPONIBILIDAD POR ALMACENES");
         ReporteAlmacenesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReporteAlmacenesButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ReporteAlmacenesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(ReporteAlmacenesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 340, -1));
 
+        RealizarPedidoButton.setBackground(new java.awt.Color(204, 204, 204));
+        RealizarPedidoButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        RealizarPedidoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
         RealizarPedidoButton.setText("REALIZAR PEDIDO");
         RealizarPedidoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RealizarPedidoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(RealizarPedidoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        getContentPane().add(RealizarPedidoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 340, -1));
 
+        AgregarAlmacenButton.setBackground(new java.awt.Color(204, 204, 204));
+        AgregarAlmacenButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        AgregarAlmacenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.png"))); // NOI18N
         AgregarAlmacenButton.setText("AGREGAR UN NUEVO ALMACEN");
         AgregarAlmacenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarAlmacenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarAlmacenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        getContentPane().add(AgregarAlmacenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 340, -1));
 
+        AgregarCaminoButton.setBackground(new java.awt.Color(204, 204, 204));
+        AgregarCaminoButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        AgregarCaminoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
         AgregarCaminoButton.setText("AGREGAR UN NUEVO CAMINO");
         AgregarCaminoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarCaminoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarCaminoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        getContentPane().add(AgregarCaminoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 340, -1));
 
-        GestionStockButton.setText("GESTION DE STOCK DE UN ALMACEN");
+        GestionStockButton.setBackground(new java.awt.Color(204, 204, 204));
+        GestionStockButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        GestionStockButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
+        GestionStockButton.setText("GESTIÓN DE STOCK DE UN ALMACEN");
         GestionStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GestionStockButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(GestionStockButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        getContentPane().add(GestionStockButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 340, -1));
 
+        jButton4.setBackground(new java.awt.Color(204, 204, 204));
+        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
         jButton4.setText("MOSTRAR GRAFO");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 340, -1));
 
+        ActualizarRepoButton.setBackground(new java.awt.Color(255, 153, 0));
+        ActualizarRepoButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        ActualizarRepoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7.png"))); // NOI18N
         ActualizarRepoButton.setText("ACTUALIZAR REPOSITORIO");
+        ActualizarRepoButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         ActualizarRepoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarRepoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ActualizarRepoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
+        getContentPane().add(ActualizarRepoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 250, 70));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo amazon.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,6 +255,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JButton ActualizarRepoButton;
     private javax.swing.JButton AgregarAlmacenButton;
     private javax.swing.JButton AgregarCaminoButton;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton GestionStockButton;
     private javax.swing.JButton RealizarPedidoButton;
     private javax.swing.JToggleButton ReporteAlmacenesButton;

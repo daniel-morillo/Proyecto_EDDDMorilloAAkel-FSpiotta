@@ -27,6 +27,7 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
      */
     public InterfazRealizarPedido(Grafo grafoWarehouse) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.grafoWarehouse = grafoWarehouse;
     }
     
@@ -177,12 +178,14 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TextAreaPedirProductos = new javax.swing.JTextArea();
         PedirProductosButton = new javax.swing.JButton();
-        SeleccioneAlmacenButton = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TextAreaAlmacen = new javax.swing.JTextArea();
         VerProductosButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -190,71 +193,86 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
 
-        VolverMenuButton.setText("VOLVER AL MENU");
+        VolverMenuButton.setBackground(new java.awt.Color(255, 153, 0));
+        VolverMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MENU.png"))); // NOI18N
         VolverMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverMenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(VolverMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, -1, -1));
+        getContentPane().add(VolverMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, -1, -1));
 
         VerProductosTextArea.setEditable(false);
+        VerProductosTextArea.setBackground(new java.awt.Color(204, 204, 204));
         VerProductosTextArea.setColumns(20);
         VerProductosTextArea.setRows(5);
         jScrollPane1.setViewportView(VerProductosTextArea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 210));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 270, 350));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setText("Ingrese la lista de los productos que desea adquirir ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setText("con la siguiente estructura. De lo contrario, no se acepta");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("NombreDelProducto,Cantidad \\n");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
+        TextAreaPedirProductos.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaPedirProductos.setColumns(20);
         TextAreaPedirProductos.setRows(5);
         jScrollPane2.setViewportView(TextAreaPedirProductos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 300, 190));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 270, 90));
 
+        PedirProductosButton.setBackground(new java.awt.Color(204, 204, 204));
+        PedirProductosButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         PedirProductosButton.setText("PEDIR PRODUCTOS");
         PedirProductosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PedirProductosButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(PedirProductosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
+        getContentPane().add(PedirProductosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
 
-        SeleccioneAlmacenButton.setText("SELECCIONE ALMACEN");
-        SeleccioneAlmacenButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeleccioneAlmacenButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(SeleccioneAlmacenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, -1));
-
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setText("Coloque aqui el almacen desde el cual ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel5.setText("quiere realizar el pedido (Coloque la letra)");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
+        TextAreaAlmacen.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaAlmacen.setColumns(20);
         TextAreaAlmacen.setRows(5);
         jScrollPane3.setViewportView(TextAreaAlmacen);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 220, 30));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 260, 90));
 
+        VerProductosButton.setBackground(new java.awt.Color(204, 204, 204));
+        VerProductosButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         VerProductosButton.setText("VER PRODUCTOS OFERTADOS");
         VerProductosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VerProductosButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(VerProductosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        getContentPane().add(VerProductosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel6.setText("SELECCIONE ALMACEN");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -324,10 +342,6 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         VerProductosTextArea.setText(cadena);
     }//GEN-LAST:event_VerProductosButtonActionPerformed
 
-    private void SeleccioneAlmacenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccioneAlmacenButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleccioneAlmacenButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -364,8 +378,8 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton PedirProductosButton;
-    private javax.swing.JTextField SeleccioneAlmacenButton;
     private javax.swing.JTextArea TextAreaAlmacen;
     private javax.swing.JTextArea TextAreaPedirProductos;
     private javax.swing.JButton VerProductosButton;
@@ -376,6 +390,8 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -27,6 +27,7 @@ public class InterfazGestionStock extends javax.swing.JFrame {
     public InterfazGestionStock(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public String recorridoBFS(Vertice startAlmacen, Grafo grafoWarehouse) {
@@ -102,6 +103,8 @@ public class InterfazGestionStock extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         TextAreaStockAgregarInicial = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,97 +112,123 @@ public class InterfazGestionStock extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
-        VolverMenuButton.setText("VOLVER AL MENU");
+        VolverMenuButton.setBackground(new java.awt.Color(255, 153, 0));
+        VolverMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MENU.png"))); // NOI18N
         VolverMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverMenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(VolverMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, -1, -1));
+        getContentPane().add(VolverMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, -1, -1));
 
+        MostrarTodoButton.setBackground(new java.awt.Color(204, 204, 204));
+        MostrarTodoButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         MostrarTodoButton.setText("MOSTRAR ALMACENES REGISTRADO");
         MostrarTodoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarTodoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MostrarTodoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        getContentPane().add(MostrarTodoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
+        TextAreaMostrarTodo.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaMostrarTodo.setColumns(20);
         TextAreaMostrarTodo.setRows(5);
         jScrollPane1.setViewportView(TextAreaMostrarTodo);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 320, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 320, 130));
 
+        TextAreaStockAgregar.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaStockAgregar.setColumns(20);
         TextAreaStockAgregar.setRows(5);
         jScrollPane2.setViewportView(TextAreaStockAgregar);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 110, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 110, -1));
 
+        TextAreaAlmacenLetra.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaAlmacenLetra.setColumns(20);
         TextAreaAlmacenLetra.setRows(5);
         jScrollPane3.setViewportView(TextAreaAlmacenLetra);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, -1));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 110, -1));
 
+        TextAreaProducto.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaProducto.setColumns(20);
         TextAreaProducto.setRows(5);
         jScrollPane4.setViewportView(TextAreaProducto);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 110, -1));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 110, -1));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel1.setText("STOCK A AGREGAR --> ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setText("ALMACEN --> ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("PRODUCTO --> ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
+        AgregarButton.setBackground(new java.awt.Color(204, 204, 204));
+        AgregarButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         AgregarButton.setText("AGREGAR EXISTENCIAS");
         AgregarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        getContentPane().add(AgregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, -1, -1));
 
+        TextAreaAlmacenLetraAgregarP.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaAlmacenLetraAgregarP.setColumns(20);
         TextAreaAlmacenLetraAgregarP.setRows(5);
         jScrollPane5.setViewportView(TextAreaAlmacenLetraAgregarP);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 110, -1));
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 110, -1));
 
+        TextAreaAgregarP.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaAgregarP.setColumns(20);
         TextAreaAgregarP.setRows(5);
         jScrollPane6.setViewportView(TextAreaAgregarP);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 110, -1));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 110, -1));
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setText("ALMACEN --> ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel5.setText("PRODUCTO --> ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
+        AgregarProductoButton.setBackground(new java.awt.Color(204, 204, 204));
+        AgregarProductoButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         AgregarProductoButton.setText("AGREGAR PRODUCTO");
         AgregarProductoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarProductoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarProductoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
+        getContentPane().add(AgregarProductoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
 
+        TextAreaStockAgregarInicial.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaStockAgregarInicial.setColumns(20);
         TextAreaStockAgregarInicial.setRows(5);
         jScrollPane7.setViewportView(TextAreaStockAgregarInicial);
 
-        getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 110, -1));
+        getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 110, -1));
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setText("STOCK INICIAL --> ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -314,6 +343,7 @@ public class InterfazGestionStock extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarButton;
     private javax.swing.JButton AgregarProductoButton;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton MostrarTodoButton;
     private javax.swing.JTextArea TextAreaAgregarP;
     private javax.swing.JTextArea TextAreaAlmacenLetra;
@@ -329,6 +359,7 @@ public class InterfazGestionStock extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
