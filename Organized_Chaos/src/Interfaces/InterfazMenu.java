@@ -70,7 +70,7 @@ public class InterfazMenu extends javax.swing.JFrame {
             pw.close();;
             JOptionPane.showMessageDialog(null, "GUARDADO EXITOSO");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL LEER ARCHIVO. \nTipo de error: " + e);
+            JOptionPane.showMessageDialog(null, "NO SELECCIONO NINGUN ARCHIVO O NO SE PUDO CARGAR EL ARCHIVO");
         }
     }
     
