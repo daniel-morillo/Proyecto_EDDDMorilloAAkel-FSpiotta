@@ -33,47 +33,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.grafoWarehouse = new Grafo();
     }
-    
-    public void cargarArchivo(Grafo grafoWarehouse){
-        JFileChooser archivo = new JFileChooser();
-        archivo.showOpenDialog(archivo);
-        File file = archivo.getSelectedFile();
-        String almacenes_txt = "";
-        if (!grafoWarehouse.esVacio()) {
-            almacenes_txt += "Almacenes;\n";
-            
-            Nodo<Vertice> aux = grafoWarehouse.getListaPrincipal().getpFirst();
-            for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
-                almacenes_txt += "Almacen " + aux.getElemento().getNombre() + ":\n";
-                Nodo<Producto> aux2 = aux.getElemento().getListaDeProdutcos().getpFirst();
-                for (int j = 0; j < aux.getElemento().getListaDeProdutcos().getSize(); j++) {
-                    almacenes_txt += aux2.getElemento().getNombre() + "," + aux2.getElemento().getStock() + "\n";
-                    aux2 = aux2.getpNext();
-                }
-                aux = aux.getpNext();
-            }
-            
-            almacenes_txt += "Rutas;\n";
-            Nodo<Vertice> aux3 = grafoWarehouse.getListaPrincipal().getpFirst();
-            for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
-                Nodo<Arco> aux4 = aux3.getElemento().getListaDeAdyacencia().getpFirst();
-                for (int j = 0; j < aux3.getElemento().getListaDeAdyacencia().getSize(); j++) {
-                    almacenes_txt += aux4.getElemento().getVerticeOrigenNombre() + "," + aux4.getElemento().getVerticeDestinoNombre() + "," + aux4.getElemento().getDistancia() + "\n";
-                    aux4 = aux4.getpNext();
-                }
-                aux3 = aux3.getpNext();
-            }
-        }
-        try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.print(almacenes_txt);
-            pw.close();;
-            JOptionPane.showMessageDialog(null, "GUARDADO EXITOSO");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL LEER ARCHIVO. \nTipo de error: " + e);
-        }
-    }
-    
+        
     public String leerArchivo(){
         JFileChooser archivo = new JFileChooser();
         archivo.showOpenDialog(archivo);
@@ -135,9 +95,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 }
                 br.close();
                 JOptionPane.showMessageDialog(null, "LECTURA COMPLETADA");
+                InterfazMenu initEstacion = new InterfazMenu(grafoWarehouse);
+                this.setVisible(false);
+                initEstacion.setVisible(true);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL LEER ARCHIVO. \nTipo de error: " + e);
+            JOptionPane.showMessageDialog(null, "NO SELECCIONO NINGUN ARCHIVO O NO SE PUDO LEER PROPORCIONADO");
         } return texto;
     }
 
@@ -205,22 +168,18 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel7.setText("--------------------------------------------------------------");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         Fondo.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo amazon.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 610));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CargarArchivoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoButtonActionPerformed
         // TODO add your handling code here:
-        this.text = this.leerArchivo();
-        InterfazMenu initEstacion = new InterfazMenu(grafoWarehouse);
-        this.setVisible(false);
-        initEstacion.setVisible(true);
-        //Prueba menu = new Prueba(this);   
+        InterfazPrincipal.text = this.leerArchivo(); 
     }//GEN-LAST:event_CargarArchivoButtonActionPerformed
 
     /**
