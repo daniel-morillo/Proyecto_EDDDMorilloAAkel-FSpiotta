@@ -51,8 +51,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 while((line = br.readLine()) != null){
                     if (!line.isEmpty()) {
                         texto += line + "\n";
-                    }
-                    
+                    }    
                 }
                 
                 if (!"".equals(texto)) {
