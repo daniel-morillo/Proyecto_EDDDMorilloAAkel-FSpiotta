@@ -43,7 +43,11 @@ public class InterfazMenu extends javax.swing.JFrame {
                 almacenes_txt += "Almacen " + aux.getElemento().getNombre() + ":\n";
                 Nodo<Producto> aux2 = aux.getElemento().getListaDeProdutcos().getpFirst();
                 for (int j = 0; j < aux.getElemento().getListaDeProdutcos().getSize(); j++) {
-                    almacenes_txt += aux2.getElemento().getNombre() + "," + aux2.getElemento().getStock() + "\n";
+                    if (j == aux.getElemento().getListaDeProdutcos().getSize() - 1) {
+                        almacenes_txt += aux2.getElemento().getNombre() + "," + aux2.getElemento().getStock() + ";\n";
+                    } else {
+                        almacenes_txt += aux2.getElemento().getNombre() + "," + aux2.getElemento().getStock() + "\n";
+                    }
                     aux2 = aux2.getpNext();
                 }
                 aux = aux.getpNext();
