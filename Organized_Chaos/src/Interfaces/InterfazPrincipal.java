@@ -178,8 +178,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         this.text = this.leerArchivo();
         InterfazMenu initEstacion = new InterfazMenu(grafoWarehouse);
         this.setVisible(false);
-        initEstacion.setVisible(true);
-        //Prueba menu = new Prueba(this);   
+        initEstacion.setVisible(true);    
     }//GEN-LAST:event_CargarArchivoButtonActionPerformed
 
     /**
