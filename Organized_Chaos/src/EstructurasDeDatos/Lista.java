@@ -9,8 +9,9 @@ import Clases.Pair;
 import Clases.Vertice;
 
 /**
- *
- * @author fabriziospiotta
+ * Estra clase contiene las listas que serán de utilidad para todo el proyecto
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
+ * @param <T>
  */
 public class Lista<T> {
     
@@ -18,13 +19,20 @@ public class Lista<T> {
     private Nodo pLast;
     private int size;
     
+    /**
+     * Constructor de la clase Lista
+     */
     public Lista() {
         this.pFirst = null;
         this.pLast = null;
         this.size = 0;
     }
     
-    
+    /**
+     * Método que busca un vértice (almacen) por su número
+     * @param numeroVertice el número de del vértice que se quiere buscar
+     * @return El vértice que se está buscando si es encontrado
+     */
     public Vertice BuscarVertice(int numeroVertice){
         Nodo<Vertice> aux = this.getpFirst();
         for (int i = 0; i < this.getSize(); i++) {
@@ -36,6 +44,11 @@ public class Lista<T> {
         return null;
     }
     
+    /**
+     * Método para buscar un vértice (almacen) por su letra
+     * @param letraVertice La letra del almacen que se quiere encontrar
+     * @return El vértice que se está buscando si es encontrado
+     */
     public Vertice BuscarVerticeLetra(String letraVertice){
         Nodo<Vertice> aux = this.getpFirst();
         for (int i = 0; i < this.getSize(); i++) {
@@ -47,6 +60,10 @@ public class Lista<T> {
         return null;
     }
     
+    /**
+     * Método que agrega un pair (vértice y distancia) de una forma ordenada 
+     * @param element Pair que se quiere agregar
+     */
     public void AppendOrdenadoPair(Pair element) {
         Nodo<Pair> pNew = new Nodo(element);
         if (!isEmpty()) {
@@ -85,12 +102,18 @@ public class Lista<T> {
         }
     }
     
-    
+    /**
+     * Método que verifica si la lista está vacía
+     * @return
+     */
     public boolean isEmpty() {
         return size == 0;
     }
     
-    
+    /**
+     * Método que agrega un elemento al final de la lista
+     * @param element elemento que quiere ser agregado
+     */
     public void AppendAtTheEnd(T element) {
         Nodo pNew = new Nodo (element);
         if (!isEmpty()) {
@@ -104,6 +127,10 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Método que agrega un elemento al principio de la lista
+     * @param element elemento que quiere ser agregado
+     */
     public void AppendAthTheBeginning(T element) {
         Nodo pNew = new Nodo(element);
         if (!isEmpty()) {
@@ -117,7 +144,11 @@ public class Lista<T> {
         }
     }
     
-       
+    /**
+     * Método que agrega un elemento en una posición dada, contando de izquierda a derecha
+     * @param index posición en la que quiere agregarse el elemento
+     * @param element elemento a ser agregado
+     */
     public void AppendAtThePosition_LeftToRight(int index, T element) {
         if (!isEmpty()) {
             Nodo pNew = new Nodo(element);
@@ -132,6 +163,10 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Método que elimina un elemento
+     * @param element elemento que quiere ser eliminado
+     */
     public void Delete(T element){
         if (!isEmpty()) {
             if (pFirst.getElemento() == element) {
@@ -163,6 +198,10 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Elimina un pair dentro de la lista 
+     * @param element vertice que se quiere eliminar
+     */
     public void DeletePair(Vertice element){
         if (!isEmpty()) {
             char character = element.getNombre().charAt(0);
@@ -197,6 +236,10 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Elimina un objeto dentro de la lista
+     * @param element el objeto a ser eliminado
+     */
     public void DeleteObjeto(T element){
         if (!isEmpty()) {
             if (pFirst == element) {
@@ -228,6 +271,9 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Método que imprime la lista de adyacencia 
+     */
     public void imprimirListaAdyacencia(){
         if (!isEmpty()) {
                 String cadena = "";
@@ -242,6 +288,9 @@ public class Lista<T> {
             }
     }
     
+    /**
+     * Método que imprime la lista principal del grafo
+     */
     public void imprimirListaPrincipal(){
         if (!isEmpty()) {
             Nodo<Vertice> aux = this.getpFirst();
@@ -254,6 +303,10 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Método que elimina un arco del grafo
+     * @param element arco que quiere ser eliminado
+     */
     public void DeleteArco(Arco element){
         if (!isEmpty()) {
             Nodo<Arco> aux = this.getpFirst();
@@ -278,42 +331,48 @@ public class Lista<T> {
     
         
     /**
-     * @return the pFirst
+     * Obtiene el primer nodo de la lista
+     * @return el primero nodo de la lista
      */
     public Nodo getpFirst() {
         return pFirst;
     }
 
     /**
-     * @param pFirst the pFirst to set
+     * Establece el primer nodo de la lista
+     * @param pFirst el nodo a ser establecido como primero
      */
     public void setpFirst(Nodo pFirst) {
         this.pFirst = pFirst;
     }
 
     /**
-     * @return the pLast
+     * Retorna el último nodo de la lista
+     * @return el último nodo de la lista
      */
     public Nodo getpLast() {
         return pLast;
     }
 
     /**
-     * @param pLast the pLast to set
+     * Establece el último nodo de la lista
+     * @param pLast el último nodo a ser establecido
      */
     public void setpLast(Nodo pLast) {
         this.pLast = pLast;
     }
 
     /**
-     * @return the size
+     * Obtiene el tamaño de la lista
+     * @return tamaño de la lista
      */
     public int getSize() {
         return size;
     }
 
     /**
-     * @param size the size to set
+     * Establece el tamaño de la lista
+     * @param size el tamaño a ser establecido
      */
     public void setSize(int size) {
         this.size = size;

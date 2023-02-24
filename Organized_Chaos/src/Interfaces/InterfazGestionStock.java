@@ -10,19 +10,18 @@ import Clases.Vertice;
 import EstructurasDeDatos.Cola;
 import EstructurasDeDatos.Grafo;
 import EstructurasDeDatos.Nodo;
-import static Interfaces.InterfazAgregarArco.grafoWarehouse;
-import static Interfaces.InterfazReporteAlmacenes.grafoWarehouse;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta clase permite gestionar el stock de los almacenes, creando productos nuevos o agregándole existencias a ya existentes
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class InterfazGestionStock extends javax.swing.JFrame {
     
     static Grafo grafoWarehouse;
     /**
-     * Creates new form InterfazGestionStock
+     * Crea la interfaz
+     * @param grafoWarehouse el grafo
      */
     public InterfazGestionStock(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
@@ -30,6 +29,12 @@ public class InterfazGestionStock extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    /**
+     *  Este método permite recorrer la información de todo el grafo y muestra todos los productos en sus respectivos almacenes y con su stock
+     * @param startAlmacen Es el primer vértice o almacén por el cual empieza el recorrido BFS
+     * @param grafoWarehouse El grafo
+     * @return Un string con toda la información de los almacenes, productos y stock disponible
+     */
     public String recorridoBFS(Vertice startAlmacen, Grafo grafoWarehouse) {
         String cadena = "";
         boolean[] visited = new boolean[grafoWarehouse.getListaPrincipal().getSize()]; 
@@ -239,7 +244,10 @@ public class InterfazGestionStock extends javax.swing.JFrame {
         InterfazMenu menu = new InterfazMenu(grafoWarehouse);
         menu.setVisible(true);
     }//GEN-LAST:event_VolverMenuButtonActionPerformed
-
+    /**
+     * Muestra todos los productos y almacenes con sus stocks
+     * @param evt 
+     */
     private void MostrarTodoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodoButtonActionPerformed
         // TODO add your handling code here:
         try {
@@ -249,7 +257,10 @@ public class InterfazGestionStock extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR DESCONOCIDO!. \nTipo de error: " + e);
         } 
     }//GEN-LAST:event_MostrarTodoButtonActionPerformed
-
+    /**
+     * Recoge la información del nombre del producto, almacen y crea un nuevo producto
+     * @param evt 
+     */
     private void AgregarProductoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoButtonActionPerformed
         // TODO add your handling code here:
         if ("".equals(TextAreaAlmacenLetraAgregarP.getText()) || "".equals(TextAreaAgregarP.getText()) || "".equals(TextAreaStockAgregarInicial.getText())) {
@@ -270,7 +281,11 @@ public class InterfazGestionStock extends javax.swing.JFrame {
             }
         }    
     }//GEN-LAST:event_AgregarProductoButtonActionPerformed
-
+    
+    /**
+     * Recoge la información sobre el almacen, el producto y las existencias que se quieran agregar a un producto existente y las agrega
+     * @param evt 
+     */
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
         // TODO add your handling code here:
         if ("".equals(TextAreaAlmacenLetra.getText()) || "".equals(TextAreaProducto.getText()) || "".equals(TextAreaStockAgregar.getText())) {

@@ -7,8 +7,8 @@ package Clases;
 import EstructurasDeDatos.Lista;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta clase contiene a los vértices que conforman el grafo implementado por listas de adyacencia. En este caso los vértices son los almacenes
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class Vertice {
     
@@ -17,68 +17,80 @@ public class Vertice {
     private int numVertice;
     private Lista listaDeAdyacencia;
     
-    //Constructores
+    
+    /**
+     * Constructor de la clase Vértice
+     * @param nombre nombre del vértice
+     * @param numVertice número del vértice
+     */
     
     public Vertice(String nombre, int numVertice) {
         this.nombre = nombre;
         this.listaDeProdutcos = new Lista();
-        this.numVertice = numVertice; // porque no se que numero va a ser en mi grafo
+        this.numVertice = numVertice; 
         this.listaDeAdyacencia = new Lista();
     }
     
 
-    
     /**
-     * @return the nombre
+     * Método que devuelve el nombre del vértice
+     * @return el nombre del vértice
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * Método que establece el nombre del vértice
+     * @param nombre el nombre a ser establecido
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the numVertice
+     * Método que devuelve el número del vértice
+     * @return el número del vértice
      */
     public int getNumVertice() {
         return numVertice;
     }
 
     /**
-     * @param numVertice the numVertice to set
+     * Método que establece el número del vértice
+     * @param numVertice el número a ser establecido
      */
     public void setNumVertice(int numVertice) {
         this.numVertice = numVertice;
     }
 
     /**
-     * @return the listaDeAdyacencia
+     * Método que retorna la lista de adyacencia del vértice
+     * @return la lista de adyacencia del vértice
      */
     public Lista getListaDeAdyacencia() {
         return listaDeAdyacencia;
     }
 
     /**
-     * @param listaDeAdyacencia the listaDeAdyacencia to set
+     * Método que asigna una lista de adyacencia al vértice
+     * @param listaDeAdyacencia La lista de adyacencia a ser asignada
      */
     public void setListaDeAdyacencia(Lista listaDeAdyacencia) {
         this.listaDeAdyacencia = listaDeAdyacencia;
     }
 
     /**
-     * @return the listaDeProdutcos
+     * Método que retorna la lista de productos al vértice (almacen)
+     * @return la lista de productos del vértice o almacen
      */
     public Lista getListaDeProdutcos() {
         return listaDeProdutcos;
     }
 
     /**
-     * @param listaDeProdutcos the listaDeProdutcos to set
+     * Método que asigna una lista de productos al almacen
+     * @param listaDeProdutcos la lista de productos a ser asignada al almacen
      */
     public void setListaDeProdutcos(Lista listaDeProdutcos) {
         this.listaDeProdutcos = listaDeProdutcos;

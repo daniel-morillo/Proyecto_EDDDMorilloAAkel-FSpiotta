@@ -10,14 +10,15 @@ import static Interfaces.InterfazAgregarAlmacen.grafoWarehouse;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz tiene la función de agregar arcos dentro del grafo
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class InterfazAgregarArco extends javax.swing.JFrame {
     
     static Grafo grafoWarehouse;
     /**
-     * Creates new form InterfazAgregarArco
+     * Crea la interfaz
+     * @param grafoWarehouse el grafo 
      */
     public InterfazAgregarArco(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
@@ -133,7 +134,10 @@ public class InterfazAgregarArco extends javax.swing.JFrame {
         InterfazMenu menu = new InterfazMenu(grafoWarehouse);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuButtonActionPerformed
-
+    /**
+     * Recoge la información de los text area y crea el nuevo arco
+     * @param evt 
+     */
     private void AgregarArcoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarArcoButtonActionPerformed
         // TODO add your handling code here:
         if ("".equals(TextAreaVerticeOrigen.getText()) || "".equals(TextAreaVerticeDestino.getText()) || "".equals(TextAreaDistancia.getText())) {
