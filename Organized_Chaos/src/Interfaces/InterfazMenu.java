@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
 
 /**
  * Es el menú que permite navegar hacia las otras ventanas
@@ -79,6 +81,36 @@ public class InterfazMenu extends javax.swing.JFrame {
         }
     }
     
+    
+    /**
+     * Crea el grafo, para mostrarlo, mediante la libreria de GraphStream
+     * 
+     */
+    public void CrearGraphStream() {
+        System.setProperty("org.graphstream.ui", "swing");
+        Graph graph = new SingleGraph("Warehouses");
+        graph.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: orange; size: 90px, 90px;  icon: url('imagenes//6.png'); icon-mode: at-left; size-mode: dyn-size; shape: rounded-box; stroke-mode: plain; stroke-color: black; stroke-width: 2px; text-alignment: center; text-color: white; text-style: bold; text-size: 20;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 12; text-alignment: above; text-color: orange; text-style: bold; text-size: 50; text-padding: 20;}");                                                              
+        Nodo<Vertice> aux = grafoWarehouse.getListaPrincipal().getpFirst();
+        for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
+            graph.addNode(aux.getElemento().getNombre());
+            graph.getNode(aux.getElemento().getNombre()).setAttribute("ui.label", "Almacen " + aux.getElemento().getNombre());
+            aux = aux.getpNext();
+        }
+        
+        aux = grafoWarehouse.getListaPrincipal().getpFirst();
+        for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
+            Nodo<Arco> aux2 = aux.getElemento().getListaDeAdyacencia().getpFirst();
+            for (int j = 0; j < aux.getElemento().getListaDeAdyacencia().getSize(); j++) {
+                graph.addEdge(aux2.getElemento().getVerticeOrigenNombre() + aux2.getElemento().getVerticeDestinoNombre(), aux2.getElemento().getVerticeOrigenNombre() , aux2.getElemento().getVerticeDestinoNombre(), true);
+                graph.getEdge(aux2.getElemento().getVerticeOrigenNombre() + aux2.getElemento().getVerticeDestinoNombre()).setAttribute("ui.label", aux2.getElemento().getDistancia());
+                aux2 = aux2.getpNext();
+            }
+            aux = aux.getpNext();
+        }
+        
+        graph.display();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,7 +127,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         AgregarAlmacenButton = new javax.swing.JButton();
         AgregarCaminoButton = new javax.swing.JButton();
         GestionStockButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        MostrarGrafoButton = new javax.swing.JButton();
         ActualizarRepoButton = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
@@ -160,11 +192,16 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         getContentPane().add(GestionStockButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 340, -1));
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
-        jButton4.setText("MOSTRAR GRAFO");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 340, -1));
+        MostrarGrafoButton.setBackground(new java.awt.Color(204, 204, 204));
+        MostrarGrafoButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        MostrarGrafoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
+        MostrarGrafoButton.setText("MOSTRAR GRAFO");
+        MostrarGrafoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarGrafoButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MostrarGrafoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 340, -1));
 
         ActualizarRepoButton.setBackground(new java.awt.Color(255, 153, 0));
         ActualizarRepoButton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -242,6 +279,16 @@ public class InterfazMenu extends javax.swing.JFrame {
         this.cargarArchivo(grafoWarehouse);  
     }//GEN-LAST:event_ActualizarRepoButtonActionPerformed
 
+    private void MostrarGrafoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            CrearGraphStream();
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL IMPRIMIR EL GRAFO. \nTipo de error: " + e);
+        }
+    }//GEN-LAST:event_MostrarGrafoButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,9 +331,9 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JButton AgregarCaminoButton;
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton GestionStockButton;
+    private javax.swing.JButton MostrarGrafoButton;
     private javax.swing.JButton RealizarPedidoButton;
     private javax.swing.JToggleButton ReporteAlmacenesButton;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

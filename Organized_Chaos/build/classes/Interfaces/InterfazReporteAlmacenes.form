@@ -69,6 +69,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="BFSTextArea">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
@@ -111,6 +112,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="DFSTextArea">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
