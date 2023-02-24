@@ -156,6 +156,7 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
         });
         getContentPane().add(BFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
+        BFSTextArea.setEditable(false);
         BFSTextArea.setBackground(new java.awt.Color(204, 204, 204));
         BFSTextArea.setColumns(20);
         BFSTextArea.setRows(5);
@@ -173,6 +174,7 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
         });
         getContentPane().add(DFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, -1));
 
+        DFSTextArea.setEditable(false);
         DFSTextArea.setBackground(new java.awt.Color(204, 204, 204));
         DFSTextArea.setColumns(20);
         DFSTextArea.setRows(5);
