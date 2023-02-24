@@ -9,11 +9,18 @@ import EstructurasDeDatos.Nodo;
 import Interfaces.InterfazPrincipal;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta clase corresponde
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class OrganizedChaos {
 
+    /**
+     *
+     * @param numeroVertices el numero de vertices 
+     * @param listaPrincipal es la lista de almacenes del grafo
+     * @param nodoFuente es el nodo desde el cual se va a buscar el camino más corto hacia los otros nodos
+     * @return
+     */
     public static int[] djikstra(int numeroVertices, Lista listaPrincipal, int nodoFuente){
         if (listaPrincipal.BuscarVertice(nodoFuente) != null) {
             
@@ -52,6 +59,13 @@ public class OrganizedChaos {
         }      
     }
     
+    /**
+     *
+     * @param numeroVertices
+     * @param listaPrincipal
+     * @param nodoFuente
+     * @return
+     */
     public static int[] djikstraLetra(int numeroVertices, Lista listaPrincipal, String nodoFuente){
         if (listaPrincipal.BuscarVerticeLetra(nodoFuente) != null) {
             
@@ -97,28 +111,7 @@ public class OrganizedChaos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-//        grafoPrueba.insertarVertice("Z", 0);
-//        grafoPrueba.insertarVertice("A", 1);
-//        grafoPrueba.insertarVertice("B", 2);
-//        grafoPrueba.insertarVertice("C", 3);
-//        grafoPrueba.insertarVertice("D", 4);
-//        
-//        grafoPrueba.insertarArco(10, "B", "Z", 0);
-//        grafoPrueba.insertarArco(10, "Z", "B", 2);
-//        grafoPrueba.insertarArco(3, "A", "B", 2);
-//        grafoPrueba.insertarArco(3, "B", "A", 1);
-//        grafoPrueba.insertarArco(1, "B", "C", 3);
-//        grafoPrueba.insertarArco(1, "C", "B", 2);
-//        grafoPrueba.insertarArco(4, "C", "D", 4); 
-//        grafoPrueba.insertarArco(4, "D", "C", 3); 
-//        grafoPrueba.insertarArco(6, "A", "D", 4); 
-//        grafoPrueba.insertarArco(6, "D", "A", 1); 
-//        grafoPrueba.insertarArco(1, "D", "Z", 0); 
-//        grafoPrueba.insertarArco(1, "Z", "D", 4); 
-//        
-//        grafoPrueba.getListaPrincipal().imprimirListaPrincipal();
-        
+             
         int[] dist = djikstraLetra(InterfazPrincipal.getGrafoWarehouse().getNumeroDeVertices(), InterfazPrincipal.getGrafoWarehouse().getListaPrincipal(), "B");
         
         if (dist != null) {

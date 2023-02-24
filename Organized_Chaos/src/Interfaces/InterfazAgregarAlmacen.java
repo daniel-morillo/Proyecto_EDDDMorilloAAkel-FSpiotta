@@ -10,14 +10,15 @@ import EstructurasDeDatos.Grafo;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz tiene por función el agregar almacenes con la ayuda de dos áreas de texto
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class InterfazAgregarAlmacen extends javax.swing.JFrame {
 
     static Grafo grafoWarehouse;
     /**
-     * Creates new form InterfazAgregarAlmacen
+     * Crea una nueva Interfaz donde se agregarán almacenes
+     * @param grafoWarehouse 
      */
     public InterfazAgregarAlmacen(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
@@ -142,7 +143,10 @@ public class InterfazAgregarAlmacen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Crea un nuevo almacen, tomando la información procedente de los text areas donde se pide el nombre del almacen y los nuevos arcos
+     * @param evt hacer click en el botón
+     */
     private void AgregarAlmacenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAlmacenButtonActionPerformed
         // TODO add your handling code here:
         try {

@@ -12,18 +12,18 @@ import EstructurasDeDatos.Cola;
 import EstructurasDeDatos.Grafo;
 import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.Nodo;
-import static Interfaces.InterfazReporteAlmacenes.grafoWarehouse;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz permite hacer un pedido de un producto al usuario, a su vez, se encuentran funciones las cuales son usadas para hacer estas peticiones posibles
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class InterfazRealizarPedido extends javax.swing.JFrame {
     
     static Grafo grafoWarehouse;
     /**
      * Creates new form InterfazRealizarPedido
+     * @param grafoWarehouse el grafo que contiene la información
      */
     public InterfazRealizarPedido(Grafo grafoWarehouse) {
         initComponents();
@@ -31,6 +31,11 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         this.grafoWarehouse = grafoWarehouse;
     }
     
+    /**
+     * Este método retorna un string todos los productos
+     * @param listaDeProductos La lista que contiene los productos a ser vendidos
+     * @return un string con todos los productos
+     */
     public String mostrarProductosNoComprados(Lista listaDeProductos) {
         String cadena = "PRODUCTOS NO COMPRADOS \n";
         cadena += "\n";
@@ -42,6 +47,12 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         return cadena;   
     }
     
+    /**
+     * Este método permite recorrer la información de todo el grafo y muestra todos los productos en sus respectivos almacenes y con su stock
+     * @param startAlmacen Es el primer vértice o almacén por el cual empieza el recorrido BFS
+     * @param grafoWarehouse el grafo que contiene la información
+     * @return un string con toda la información de los almacenes, productos y stock disponible
+     */
     public String recorridoBFS(Vertice startAlmacen, Grafo grafoWarehouse) {
         String cadena = "";
         boolean[] visited = new boolean[grafoWarehouse.getListaPrincipal().getSize()]; 
@@ -81,6 +92,10 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         return cadena;
     }
     
+    /**
+     * Crea una lista con todos los productos solicitados por el cliente
+     * @return la lista con los productos solicitados
+     */
     public Lista leerListaDeProductos(){
         Lista productosSolicitadosList = new Lista();
         String texto = TextAreaPedirProductos.getText();
@@ -93,6 +108,13 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         return productosSolicitadosList;
     }
     
+    /**
+     * Este método corresponde al algoritmo de Djikstra, el cual encuentra el camino más corto de un nodo inicial a otro dentro del grafo
+     * @param numeroVertices Es el numero de vértices del grafo
+     * @param listaPrincipal La lista principal dentro del grafo
+     * @param nodoFuente El nodo de donde partirá la búsqueda
+     * @return La distancia más corta posible desde nodoFuente hasta los otros nodos de la lista de adyacencia
+     */
     public static int[] djikstra(int numeroVertices, Lista listaPrincipal, String nodoFuente){
         if (listaPrincipal.BuscarVerticeLetra(nodoFuente) != null) {
             
@@ -132,6 +154,11 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         }      
     }
     
+    /**
+     * Descuenta del stock de un producto las existencias ya pedidas de éste
+     * @param listaProductosSolicitados
+     * @param almacen
+     */
     public void DescontarStock(Lista listaProductosSolicitados, Vertice almacen) {
         Nodo<Producto> aux = almacen.getListaDeProdutcos().getpFirst();
         Nodo<Producto> aux2 = listaProductosSolicitados.getpFirst();

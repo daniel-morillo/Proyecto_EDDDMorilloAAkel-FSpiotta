@@ -14,21 +14,26 @@ import Clases.Vertice;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta Interfaz muestra el reporte de disponibilidad de todos los almacenes
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo 
  */
 public class InterfazReporteAlmacenes extends javax.swing.JFrame {
     
     static Grafo grafoWarehouse;
     /**
-     * Creates new form InterfazReporteAlmacenes
+     * Crea la interfaz
      */
     public InterfazReporteAlmacenes(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+    /**
+     * Esta función Realiza un recorrido DFS (profundidad), pasando por todos los almacenes siguiendo el orden de sus adyacencias
+     * @param startAlmacen Almacen por el cual empieza el recorrido
+     * @param grafoWarehouse El grafo
+     * @return Un string con toda la información referente a los almacenes, productos y stocks del grafo
+     */
     public String recorridoDFS(Vertice startAlmacen, Grafo grafoWarehouse) {
         String cadena = "";
         boolean[] visited = new boolean[grafoWarehouse.getListaPrincipal().getSize()]; 
@@ -69,6 +74,12 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
         return cadena;
     }
     
+    /**
+     * Esta función Realiza un recorrido BFS (anchura), pasando por todos los almacenes en orden, es decir, A,B,c..
+     * @param startAlmacen Almacen por el cual empieza el recorrido
+     * @param grafoWarehouse El grafo
+     * @return Un string con toda la información referente a los almacenes, productos y stocks del grafo
+     */
     public String recorridoBFS(Vertice startAlmacen, Grafo grafoWarehouse) {
         String cadena = "";
         boolean[] visited = new boolean[grafoWarehouse.getListaPrincipal().getSize()]; 
@@ -186,7 +197,10 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Llama al recorrido BFS y lo muestra
+     * @param evt 
+     */
     private void BFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSButtonActionPerformed
         // TODO add your handling code here:
         try {
@@ -196,7 +210,11 @@ public class InterfazReporteAlmacenes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR DESCONOCIDO!. \nTipo de error: " + e);
         }    
     }//GEN-LAST:event_BFSButtonActionPerformed
-
+    
+    /**
+     * Llama al recorrido DFS y lo muestra
+     * @param evt 
+     */
     private void DFSButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSButtonActionPerformed
         // TODO add your handling code here:
         try {

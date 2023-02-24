@@ -15,14 +15,15 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fabriziospiotta
+ * Es el menú que permite navegar hacia las otras ventanas
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class InterfazMenu extends javax.swing.JFrame {
     
     static Grafo grafoWarehouse;
     /**
      * Creates new form InterfazEstacion
+     * @param grafoWarehouse
      */
     public InterfazMenu(Grafo grafoWarehouse) {
         this.grafoWarehouse = grafoWarehouse;
@@ -30,6 +31,10 @@ public class InterfazMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    /**
+     * Actualiza el archivo seleccionado por el usuario y lo sobreescribe con la información resultante de la corrida del programa
+     * @param grafoWarehouse el grafo
+     */
     public void cargarArchivo(Grafo grafoWarehouse){
         JFileChooser archivo = new JFileChooser();
         archivo.showOpenDialog(archivo);
@@ -178,42 +183,60 @@ public class InterfazMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Conduce a la interfaz de Reporte de Disponibilidad por Almacen
+     * @param evt 
+     */
     private void ReporteAlmacenesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteAlmacenesButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         InterfazReporteAlmacenes newI = new InterfazReporteAlmacenes(grafoWarehouse);
         newI.setVisible(true);
     }//GEN-LAST:event_ReporteAlmacenesButtonActionPerformed
-
+    /**
+     * Conduce a la interfaz de Realizar Pedido
+     * @param evt 
+     */
     private void RealizarPedidoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarPedidoButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         InterfazRealizarPedido newI = new InterfazRealizarPedido(grafoWarehouse);
         newI.setVisible(true);
     }//GEN-LAST:event_RealizarPedidoButtonActionPerformed
-
+    /**
+     * Conduce a la interfaz de Gestión de Stock
+     * @param evt 
+     */
     private void GestionStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionStockButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         InterfazGestionStock newI = new InterfazGestionStock(grafoWarehouse);
         newI.setVisible(true);
     }//GEN-LAST:event_GestionStockButtonActionPerformed
-
+    /**
+     * Conduce a la interfaz de Agregar Almacen
+     * @param evt 
+     */
     private void AgregarAlmacenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAlmacenButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         InterfazAgregarAlmacen newI = new InterfazAgregarAlmacen(grafoWarehouse);
         newI.setVisible(true);
     }//GEN-LAST:event_AgregarAlmacenButtonActionPerformed
-
+    /**
+     * Conduce a la interfaz deAgregar Camino
+     * @param evt 
+     */
     private void AgregarCaminoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCaminoButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         InterfazAgregarArco newI = new InterfazAgregarArco(grafoWarehouse);
         newI.setVisible(true);
     }//GEN-LAST:event_AgregarCaminoButtonActionPerformed
-
+    /**
+     * Llama a la función de cargar archivo
+     * @param evt 
+     */
     private void ActualizarRepoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoButtonActionPerformed
         // TODO add your handling code here:
         this.cargarArchivo(grafoWarehouse);  

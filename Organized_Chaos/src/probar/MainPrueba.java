@@ -12,6 +12,10 @@ import Interfaces.InterfazPrincipal;
  */
 public class MainPrueba {
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         InterfazPrincipal main = new InterfazPrincipal();
         main.show();

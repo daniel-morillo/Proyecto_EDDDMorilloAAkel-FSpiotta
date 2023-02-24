@@ -5,19 +5,23 @@
 package Clases;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta clase contiene la sintáxis y procedimientos competentes para la creación de arcos para ser implementados en el grafo.
+ * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
  */
 public class Arco {
     
-    //private int destino; // Numero del vertice destino
     private int distancia;
     private String verticeOrigenNombre;
     private String verticeDestinoNombre;
     private int verticeDestinoNumero;
     
-    //Constructor
-    
+    /**
+     * Constructor de la clase Arco
+     * @param verticeOrigenNombre Define el nombre del vértice origen
+     * @param verticeDestinoNombre Define el nombre del vértice destino
+     * @param distancia Corresponde a la distancia entre el vértice de origen y el vértice de destino
+     * @param verticeDestinoNumero Define el número del vértice destino
+     */
     public Arco(int distancia, String verticeOrigenNombre, String verticeDestinoNombre, int verticeDestinoNumero) {
         //this.destino = destino;
         this.distancia = distancia;
@@ -26,22 +30,26 @@ public class Arco {
         this.verticeDestinoNumero = verticeDestinoNumero;   
     }
     
+    
+    /**
+     * Constructor de la clase Arco
+     * @param verticeOrigenNombre Define el nombre del vértice origen
+     * @param verticeDestinoNombre Define el nombre del vértice destino
+     * @param distancia Corresponde a la distancia entre el vértice de origen y el vértice de destino
+     */
     public Arco(String verticeOrigenNombre, String verticeDestinoNombre, int distancia) {
-        //this.destino = destino;
+        
         this.distancia = distancia;
         this.verticeOrigenNombre = verticeOrigenNombre;
-        this.verticeDestinoNombre = verticeDestinoNombre;
-        //this.verticeDestinoNumero = verticeDestinoNumero;   
+        this.verticeDestinoNombre = verticeDestinoNombre; 
     }
     
     // Metodos
     
-//    public boolean equals(Arco n){
-//        return this.destino == n.destino;
-//    }
 
     
     /**
+     * Método que devuelve la distancia
      * @return the distancia
      */
     public int getDistancia() {
@@ -49,13 +57,15 @@ public class Arco {
     }
 
     /**
-     * @param distancia the distancia to set
+     * Método que establece la distancia
+     * @param distancia la distancia que será establecida
      */
     public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
 
     /**
+     * Método que devuelve el nombre del vértice origen
      * @return the verticeOrigenNombre
      */
     public String getVerticeOrigenNombre() {
@@ -63,6 +73,7 @@ public class Arco {
     }
 
     /**
+     * Método que establece el nombre del vértice origen
      * @param verticeOrigenNombre the verticeOrigenNombre to set
      */
     public void setVerticeOrigenNombre(String verticeOrigenNombre) {
@@ -70,6 +81,7 @@ public class Arco {
     }
 
     /**
+     * Método que devuelve el nombre del vértice destino
      * @return the verticeDestinoNombre
      */
     public String getVerticeDestinoNombre() {
@@ -77,6 +89,7 @@ public class Arco {
     }
 
     /**
+     * Método que establece el nombre del vértice destino
      * @param verticeDestinoNombre the verticeDestinoNombre to set
      */
     public void setVerticeDestinoNombre(String verticeDestinoNombre) {
@@ -84,6 +97,7 @@ public class Arco {
     }
 
     /**
+     * Métotodo que devuelve el número del vértice destino
      * @return the verticeDestinoNumero
      */
     public int getVerticeDestinoNumero() {
@@ -91,16 +105,12 @@ public class Arco {
     }
 
     /**
+     * Método que establece el número del vértice destino
      * @param verticeDestinoNumero the verticeDestinoNumero to set
      */
     public void setVerticeDestinoNumero(int verticeDestinoNumero) {
         this.verticeDestinoNumero = verticeDestinoNumero;
     }
     
-
-
-    
-    
-   
-    
+       
 }

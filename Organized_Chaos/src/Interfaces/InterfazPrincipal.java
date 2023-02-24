@@ -9,7 +9,6 @@ import EstructurasDeDatos.Nodo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import Clases.Arco;
@@ -17,8 +16,8 @@ import Clases.Producto;
 import Clases.Vertice;
 
 /**
- *
- * @author danielmorillo
+ * Esta Interfaz da comienzo al programa, es donde se recoge el archivo de texto que contiene la información a ser procesada
+ * @author Daniel Morillo, Fabrizio Spiotta, Georgina Akel
  */
 
 public class InterfazPrincipal extends javax.swing.JFrame {
@@ -34,6 +33,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         this.grafoWarehouse = new Grafo();
     }
         
+    /**
+     * Función que carga, lee y procesa el archivo txt que el usuario selecciono
+     * @return un String ya separado con todo el texto almacenado dentro del txt
+     */
     public String leerArchivo(){
         JFileChooser archivo = new JFileChooser();
         archivo.showOpenDialog(archivo);
