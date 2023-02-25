@@ -160,19 +160,20 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
      * @param almacen
      */
     public void DescontarStock(Lista listaProductosSolicitados, Vertice almacen) {
-        Nodo<Producto> aux = almacen.getListaDeProdutcos().getpFirst();
-        Nodo<Producto> aux2 = listaProductosSolicitados.getpFirst();
+        Nodo<Producto> aux =  listaProductosSolicitados.getpFirst();
+        Nodo<Producto> aux2 = almacen.getListaDeProdutcos().getpFirst();
 
-        for (int i = 0; i < almacen.getListaDeProdutcos().getSize(); i++) {
-            for (int j = 0; j < listaProductosSolicitados.getSize(); j++) {
+        for (int i = 0; i < listaProductosSolicitados.getSize(); i++) {
+            for (int j = 0; j < almacen.getListaDeProdutcos().getSize(); j++) {
                 if (!listaProductosSolicitados.isEmpty() && aux2 != null) {
                     if (aux.getElemento().getNombre().equalsIgnoreCase(aux2.getElemento().getNombre())) {
-                        for (int k = 0; k < aux2.getElemento().getStock(); k++) {
-                            if (aux.getElemento().getStock()!= 0) {
-                                aux.getElemento().setStock(aux.getElemento().getStock() -1);
-                                aux2.getElemento().setStock(aux2.getElemento().getStock() -1);  
-                                if (aux2.getElemento().getStock() == 0) {
-                                    listaProductosSolicitados.DeleteObjeto(aux2);
+                        int stockOriginal = aux.getElemento().getStock();
+                        for (int k = 0; k < stockOriginal; k++) {
+                            if (aux2.getElemento().getStock()!= 0) {
+                                aux2.getElemento().setStock(aux2.getElemento().getStock() -1);
+                                aux.getElemento().setStock(aux.getElemento().getStock() -1);  
+                                if (aux.getElemento().getStock() == 0) {
+                                    listaProductosSolicitados.DeleteObjeto(aux);
                                 }
                             } 
                         }
@@ -183,6 +184,29 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
             aux = aux.getpNext();
         }
     }
+    
+//    public void DescontarStockBien(Lista listaProductosSolicitados, Vertice almacen) {
+//        Nodo<Producto> aux =  listaProductosSolicitados.getpFirst();
+//        Nodo<Producto> aux2 = almacen.getListaDeProdutcos().getpFirst();
+//
+//        for (int i = 0; i < listaProductosSolicitados.getSize(); i++) {
+//            for (int j = 0; j < almacen.getListaDeProdutcos().getSize(); j++) {
+//                if (aux2.getElemento().getNombre().equalsIgnoreCase(aux.getElemento().getNombre())) {
+//                    for (int k = 0; k < aux.getElemento().getStock(); k++) {
+//                        if (aux2.getElemento().getStock() != 0 ) {
+//                            aux2.getElemento().setStock(aux2.getElemento().getStock() -1);
+//                            aux.getElemento().setStock(aux.getElemento().getStock() -1);
+//                            if (aux.getElemento().getStock() == 0) {
+//                                listaProductosSolicitados.DeleteObjeto(aux);
+//                            }
+//                        }
+//                    }
+//                }
+//                aux2 = aux2.getpNext();
+//            }
+//            aux = aux.getpNext();
+//        }
+//    }
     
     
 
@@ -349,7 +373,7 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
 
                         if (!listaProductosSolicitados.isEmpty()) {
                             JOptionPane.showMessageDialog(null, "ERROR! Existen algunos productos que se encuentran out of stock");
-                            JOptionPane.showMessageDialog(null, "Estos productos nose han podido comprar --> " + this.mostrarProductosNoComprados(listaProductosSolicitados));
+                            JOptionPane.showMessageDialog(null, "Estos productos no se han podido comprar --> \n" + this.mostrarProductosNoComprados(listaProductosSolicitados));
                         } else {
                             JOptionPane.showMessageDialog(null, "PEDIDO REALIZADO EXITOSAMENTE");
                         }    
