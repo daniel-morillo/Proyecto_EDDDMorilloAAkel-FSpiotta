@@ -170,11 +170,13 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
      * @param almacen
      */
     public void DescontarStock(Lista listaProductosSolicitados, Vertice almacen) {
+        int sizeOriginalListaProductosSolicitados = listaProductosSolicitados.getSize();
+        int sizeOriginalListaProductos = almacen.getListaDeProdutcos().getSize();
+        
         Nodo<Producto> aux =  listaProductosSolicitados.getpFirst();
-        Nodo<Producto> aux2 = almacen.getListaDeProdutcos().getpFirst();
-
-        for (int i = 0; i < listaProductosSolicitados.getSize(); i++) {
-            for (int j = 0; j < almacen.getListaDeProdutcos().getSize(); j++) {
+        for (int i = 0; i < sizeOriginalListaProductosSolicitados; i++) {
+            Nodo<Producto> aux2 = almacen.getListaDeProdutcos().getpFirst();
+            for (int j = 0; j < sizeOriginalListaProductos; j++) {
                 if (!listaProductosSolicitados.isEmpty() && aux2 != null) {
                     if (aux.getElemento().getNombre().equalsIgnoreCase(aux2.getElemento().getNombre())) {
                         int stockOriginal = aux.getElemento().getStock();
@@ -224,6 +226,11 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         return graph;
     }
     
+    /**
+     * Dibuja graficamente la ruta seleccionada del grafo, cuando se deben trasladar items
+     * @param graph
+     * @param listaRutas
+     */
     public Graph pintarRutaSelected(Graph graph, Lista listaRutas) {
         Nodo<String> aux = listaRutas.getpFirst();
         for (int i = 0; i < listaRutas.getSize(); i++) {
@@ -233,6 +240,11 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         return graph;
     }
     
+    /**
+     * Crea una lista de almacenes que contienen productos que se acabaron en el almacen original pedido
+     * @param almacen
+     * @param listaProductosSolicitados
+     */
     public Lista AlmacenesPorChequear(Vertice almacen, Lista listaProductosSolicitados) {
         Lista listaAlmacenesConProductosRestantes = new Lista();
         Nodo<Vertice> aux = grafoWarehouse.getListaPrincipal().getpFirst();
@@ -255,6 +267,11 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         return listaAlmacenesConProductosRestantes;
     }
     
+    /**
+     * Este algoritmo busca entre los almacenes que tienen los productos para enviar al almacen original, cual de ellos es el que se encuentra mas cerca
+     * @param almacen
+     * @param listaAlmacenesConProductosRestantes
+     */
     public Pair BuscarAlmacenMasCerca(Vertice almacen, Lista listaAlmacenesConProductosRestantes) {
         if (listaAlmacenesConProductosRestantes == null) {
             return null;
