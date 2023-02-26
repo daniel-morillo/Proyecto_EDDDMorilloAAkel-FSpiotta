@@ -6,13 +6,18 @@ package Interfaces;
 
 import Clases.Arco;
 import Clases.Pair;
+import Clases.Pareja;
 import Clases.Producto;
 import Clases.Vertice;
 import EstructurasDeDatos.Cola;
 import EstructurasDeDatos.Grafo;
 import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.Nodo;
+import static Interfaces.InterfazMenu.grafoWarehouse;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  * Esta interfaz permite hacer un pedido de un producto al usuario, a su vez, se encuentran funciones las cuales son usadas para hacer estas peticiones posibles
@@ -37,7 +42,7 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
      * @return un string con todos los productos
      */
     public String mostrarProductosNoComprados(Lista listaDeProductos) {
-        String cadena = "PRODUCTOS NO COMPRADOS \n";
+        String cadena = "";
         cadena += "\n";
         Nodo<Producto> aux = listaDeProductos.getpFirst();
         for (int i = 0; i < listaDeProductos.getSize(); i++) {
@@ -115,34 +120,39 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
      * @param nodoFuente El nodo de donde partirá la búsqueda
      * @return La distancia más corta posible desde nodoFuente hasta los otros nodos de la lista de adyacencia
      */
-    public static int[] djikstra(int numeroVertices, Lista listaPrincipal, String nodoFuente){
+    public static Pareja[] djikstra(int numeroVertices, Lista listaPrincipal, String nodoFuente){
         if (listaPrincipal.BuscarVerticeLetra(nodoFuente) != null) {
             
             Lista<Pair> priorityList = new Lista();
-            int[] dist = new int[numeroVertices];
+            Pareja[] dist = new Pareja[numeroVertices];
             for (int i = 0; i < numeroVertices; i++) {
-                dist[i] = Integer.MAX_VALUE;
+                dist[i] = new Pareja(Integer.MAX_VALUE, new Lista());
             }
             
             char nodoFuenteChar = nodoFuente.charAt(0);
             int nodoFuenteNumero =  nodoFuenteChar - 65;
-            dist[nodoFuenteNumero] = 0;
-            priorityList.AppendOrdenadoPair(new Pair(0,nodoFuenteNumero));
+            dist[nodoFuenteNumero].setDistancia(0);
+            priorityList.AppendOrdenadoPair(new Pair(0,nodoFuenteNumero, dist[nodoFuenteNumero].getListaRutas()));
 
             while(priorityList.getSize() != 0) {
                 Pair top = (Pair) priorityList.getpFirst().getElemento();
                 int dis = top.getDistance();
                 int node = top.getNumeroVertice();
+                Lista list = top.getListaRutas();
                 priorityList.Delete(top);
 
                 Nodo<Arco> aux = listaPrincipal.BuscarVertice(node).getListaDeAdyacencia().getpFirst();
                 for (int i = 0; i < listaPrincipal.BuscarVertice(node).getListaDeAdyacencia().getSize(); i++) {
                     int edgeWeight = aux.getElemento().getDistancia();
-                    int adjNode = aux.getElemento().getVerticeDestinoNumero();
+                    char adjNodeChar = aux.getElemento().getVerticeDestinoNombre().charAt(0);
+                    int adjNode = adjNodeChar - 65;
+                    Lista listaProv = list.copiarLista();
+                    listaProv.AppendAtTheEnd(aux.getElemento().getVerticeOrigenNombre() + aux.getElemento().getVerticeDestinoNombre());
 
-                    if (dis +  edgeWeight < dist[adjNode]) {
-                        dist[adjNode] = dis + edgeWeight;
-                        priorityList.AppendOrdenadoPair(new Pair(dist[adjNode], adjNode));
+                    if (dis +  edgeWeight < dist[adjNode].getDistancia()) {
+                        Pareja newP = new Pareja(dis + edgeWeight, listaProv);
+                        dist[adjNode] = newP;
+                        priorityList.AppendOrdenadoPair(new Pair(dist[adjNode].getDistancia(), adjNode, listaProv));
                     }     
                     aux = aux.getpNext();
                 }  
@@ -185,31 +195,90 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
         }
     }
     
-//    public void DescontarStockBien(Lista listaProductosSolicitados, Vertice almacen) {
-//        Nodo<Producto> aux =  listaProductosSolicitados.getpFirst();
-//        Nodo<Producto> aux2 = almacen.getListaDeProdutcos().getpFirst();
-//
-//        for (int i = 0; i < listaProductosSolicitados.getSize(); i++) {
-//            for (int j = 0; j < almacen.getListaDeProdutcos().getSize(); j++) {
-//                if (aux2.getElemento().getNombre().equalsIgnoreCase(aux.getElemento().getNombre())) {
-//                    for (int k = 0; k < aux.getElemento().getStock(); k++) {
-//                        if (aux2.getElemento().getStock() != 0 ) {
-//                            aux2.getElemento().setStock(aux2.getElemento().getStock() -1);
-//                            aux.getElemento().setStock(aux.getElemento().getStock() -1);
-//                            if (aux.getElemento().getStock() == 0) {
-//                                listaProductosSolicitados.DeleteObjeto(aux);
-//                            }
-//                        }
-//                    }
-//                }
-//                aux2 = aux2.getpNext();
-//            }
-//            aux = aux.getpNext();
-//        }
-//    }
+    /**
+     * Crea el grafo, para mostrarlo, mediante la libreria de GraphStream
+     * 
+     */
+    public Graph CrearGraphStream() {
+        System.setProperty("org.graphstream.ui", "swing");
+        Graph graph = new SingleGraph("Warehouses");
+        graph.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: orange; size: 95px, 95px;  icon: url('imagenes//Grafo2.png'); icon-mode: at-left; size-mode: dyn-size; shape: rounded-box; stroke-mode: plain; stroke-color: black; stroke-width: 2px; text-alignment: center; text-color: white; text-style: bold; text-size: 20;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 12; text-alignment: above; text-color: orange; text-style: bold; text-size: 50; text-padding: 20;}");                                                              
+        Nodo<Vertice> aux = grafoWarehouse.getListaPrincipal().getpFirst();
+        for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
+            graph.addNode(aux.getElemento().getNombre());
+            graph.getNode(aux.getElemento().getNombre()).setAttribute("ui.label", "Almacen " + aux.getElemento().getNombre());
+            aux = aux.getpNext();
+        }
+        
+        aux = grafoWarehouse.getListaPrincipal().getpFirst();
+        for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
+            Nodo<Arco> aux2 = aux.getElemento().getListaDeAdyacencia().getpFirst();
+            for (int j = 0; j < aux.getElemento().getListaDeAdyacencia().getSize(); j++) {
+                graph.addEdge(aux2.getElemento().getVerticeOrigenNombre() + aux2.getElemento().getVerticeDestinoNombre(), aux2.getElemento().getVerticeOrigenNombre() , aux2.getElemento().getVerticeDestinoNombre(), true);
+                graph.getEdge(aux2.getElemento().getVerticeOrigenNombre() + aux2.getElemento().getVerticeDestinoNombre()).setAttribute("ui.label", aux2.getElemento().getDistancia());
+                aux2 = aux2.getpNext();
+            }
+            aux = aux.getpNext();
+        }
+        
+        return graph;
+    }
     
+    public Graph pintarRutaSelected(Graph graph, Lista listaRutas) {
+        Nodo<String> aux = listaRutas.getpFirst();
+        for (int i = 0; i < listaRutas.getSize(); i++) {
+            graph.getEdge(aux.getElemento()).setAttribute("ui.style", "fill-color: green;");
+            aux = aux.getpNext();
+        }
+        return graph;
+    }
     
-
+    public Lista AlmacenesPorChequear(Vertice almacen, Lista listaProductosSolicitados) {
+        Lista listaAlmacenesConProductosRestantes = new Lista();
+        Nodo<Vertice> aux = grafoWarehouse.getListaPrincipal().getpFirst();
+        for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
+            if (almacen != aux.getElemento()) {
+                Nodo<Producto> aux2 = aux.getElemento().getListaDeProdutcos().getpFirst();
+                for (int j = 0; j < aux.getElemento().getListaDeProdutcos().getSize(); j++) {
+                    Nodo<Producto> aux3 = listaProductosSolicitados.getpFirst();
+                    for (int k = 0; k < listaProductosSolicitados.getSize(); k++) {
+                        if (aux2.getElemento().getNombre().equalsIgnoreCase(aux3.getElemento().getNombre())) {
+                            listaAlmacenesConProductosRestantes.AppendAtTheEnd(aux.getElemento());
+                        }
+                        aux3 = aux3.getpNext();
+                    }
+                    aux2 = aux2.getpNext();
+                }
+            }
+            aux = aux.getpNext();
+        }
+        return listaAlmacenesConProductosRestantes;
+    }
+    
+    public Pair BuscarAlmacenMasCerca(Vertice almacen, Lista listaAlmacenesConProductosRestantes) {
+        if (listaAlmacenesConProductosRestantes == null) {
+            return null;
+        } else {
+            Pair PairConseguido = new Pair(0,0, new Lista());
+            int DistanciaMasCorta = Integer.MAX_VALUE;
+            Nodo<Vertice> aux5 = listaAlmacenesConProductosRestantes.getpFirst();
+            for (int i = 0; i < listaAlmacenesConProductosRestantes.getSize(); i++) {
+                Pareja[] arrayConDistanciasMasCortas = djikstra(grafoWarehouse.getListaPrincipal().getSize(), grafoWarehouse.getListaPrincipal(),aux5.getElemento().getNombre());
+                char caract = almacen.getNombre().charAt(0);
+                int numV = caract - 65;
+                if (arrayConDistanciasMasCortas[numV].getDistancia() < DistanciaMasCorta) {
+                    char almacenQueEstaMasCercaCh  = aux5.getElemento().getNombre().charAt(0);
+                    int numAlmacenQueEstaMasCerca = almacenQueEstaMasCercaCh - 65;
+                    PairConseguido.setDistance(arrayConDistanciasMasCortas[numV].getDistancia());
+                    PairConseguido.setNumeroVertice(numAlmacenQueEstaMasCerca);
+                    PairConseguido.setListaRutas(arrayConDistanciasMasCortas[numV].getListaRutas());
+                }
+                aux5 = aux5.getpNext();
+            }
+            return PairConseguido;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -352,25 +421,22 @@ public class InterfazRealizarPedido extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "PEDIDO REALIZADO EXITOSAMENTE");
                     }
                     else {
-                        Lista listaConDistanciasOrdenadas = new Lista();
-                        int[] arrayConDistanciasMasCortas = djikstra(grafoWarehouse.getListaPrincipal().getSize(), grafoWarehouse.getListaPrincipal(),almacen.getNombre());
-                        for (int i = 0; i < arrayConDistanciasMasCortas.length; i++) {
-                            Pair newPair = new Pair(arrayConDistanciasMasCortas[i], i);
-                            listaConDistanciasOrdenadas.AppendOrdenadoPair(newPair);
+                         Lista listaAlmacenesConProductosRestantes = this.AlmacenesPorChequear(almacen, listaProductosSolicitados);
+                        while (!listaProductosSolicitados.isEmpty()) {
+                            Pair PairConseguido = this.BuscarAlmacenMasCerca(almacen, listaAlmacenesConProductosRestantes);
+                            if (PairConseguido == null || listaAlmacenesConProductosRestantes.isEmpty()) {
+                                break;
+                            } else {
+                                Vertice almacenQueEstaMasCerca = grafoWarehouse.getListaPrincipal().BuscarVertice(PairConseguido.getNumeroVertice());
+                                this.DescontarStock(listaProductosSolicitados, almacenQueEstaMasCerca);
+                                listaAlmacenesConProductosRestantes.Delete(almacenQueEstaMasCerca);
+                                JOptionPane.showMessageDialog(null, "Se han transferido productos del almacen " + almacenQueEstaMasCerca.getNombre() + " con una distancia de " + PairConseguido.getDistance() + "\n" + "La ruta seleccionada es la siguiente " + PairConseguido.getListaRutas().imprimirRutas());
+                                Graph grafoOriginal = this.CrearGraphStream();
+                                Graph grafoConRutas = this.pintarRutaSelected(grafoOriginal, PairConseguido.getListaRutas());
+                                Viewer viewer = grafoConRutas.display();
+                                viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+                            }
                         }
-                        listaConDistanciasOrdenadas.DeletePair(almacen);
-
-                        for (int i = 0; i < listaConDistanciasOrdenadas.getSize(); i++) {
-                            Nodo<Pair> aux = listaConDistanciasOrdenadas.getpFirst();
-                            for (int j = 0; j < listaConDistanciasOrdenadas.getSize(); j++) {
-                                char character = (char) (aux.getElemento().getNumeroVertice() + 65);
-                                String NombreVertice = String.valueOf(character);
-                                Vertice almacenAgarrado = grafoWarehouse.getListaPrincipal().BuscarVerticeLetra(NombreVertice); 
-                                this.DescontarStock(listaProductosSolicitados, almacenAgarrado);
-                                aux = aux.getpNext();
-                            }  
-                        }
-
                         if (!listaProductosSolicitados.isEmpty()) {
                             JOptionPane.showMessageDialog(null, "ERROR! Existen algunos productos que se encuentran out of stock");
                             JOptionPane.showMessageDialog(null, "Estos productos no se han podido comprar --> \n" + this.mostrarProductosNoComprados(listaProductosSolicitados));

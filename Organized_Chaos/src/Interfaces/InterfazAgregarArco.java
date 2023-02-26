@@ -6,7 +6,6 @@ package Interfaces;
 
 import Clases.Arco;
 import EstructurasDeDatos.Grafo;
-import static Interfaces.InterfazAgregarAlmacen.grafoWarehouse;
 import javax.swing.JOptionPane;
 
 /**
