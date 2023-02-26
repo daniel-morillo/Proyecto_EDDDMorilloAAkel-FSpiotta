@@ -329,6 +329,41 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Método que copia la lista actual
+     */
+    public Lista copiarLista() {
+        Lista listaCopia = new Lista();
+        if (this.isEmpty()) {
+            return listaCopia;
+        } else {
+            Nodo aux = this.getpFirst();
+            for (int i = 0; i < this.getSize(); i++) {
+                listaCopia.AppendAtTheEnd(aux.getElemento());
+                aux = aux.getpNext();
+            }
+            return listaCopia;
+        }
+    }
+    
+    /**
+     * Método que imprime la lista de rutas de forma textual
+     */
+    public String imprimirRutas() {
+        String cadena = "";
+        Nodo<String> aux = this.pFirst;
+        for (int i = 0; i < this.getSize(); i++) {
+            char letra = aux.getElemento().charAt(0);
+            cadena += "Almacen " + letra;
+            cadena += " --> ";
+            if (i == this.getSize() - 1) {
+                char letraFinal = aux.getElemento().charAt(1);
+                cadena += "Almacen " + letraFinal;
+            }
+            aux = aux.getpNext();
+        }
+        return cadena;
+    }
         
     /**
      * Obtiene el primer nodo de la lista

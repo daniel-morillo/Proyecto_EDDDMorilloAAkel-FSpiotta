@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  * Es el menú que permite navegar hacia las otras ventanas
@@ -89,7 +90,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     public void CrearGraphStream() {
         System.setProperty("org.graphstream.ui", "swing");
         Graph graph = new SingleGraph("Warehouses");
-        graph.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: orange; size: 90px, 90px;  icon: url('imagenes//6.png'); icon-mode: at-left; size-mode: dyn-size; shape: rounded-box; stroke-mode: plain; stroke-color: black; stroke-width: 2px; text-alignment: center; text-color: white; text-style: bold; text-size: 20;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 12; text-alignment: above; text-color: orange; text-style: bold; text-size: 50; text-padding: 20;}");                                                              
+        graph.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: orange; size: 95px, 95px;  icon: url('imagenes//Grafo2.png'); icon-mode: at-left; size-mode: dyn-size; shape: rounded-box; stroke-mode: plain; stroke-color: black; stroke-width: 2px; text-alignment: center; text-color: white; text-style: bold; text-size: 20;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 12; text-alignment: above; text-color: orange; text-style: bold; text-size: 50; text-padding: 20;}");                                                              
         Nodo<Vertice> aux = grafoWarehouse.getListaPrincipal().getpFirst();
         for (int i = 0; i < grafoWarehouse.getListaPrincipal().getSize(); i++) {
             graph.addNode(aux.getElemento().getNombre());
@@ -108,7 +109,9 @@ public class InterfazMenu extends javax.swing.JFrame {
             aux = aux.getpNext();
         }
         
-        graph.display();
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+        
     }
     
 

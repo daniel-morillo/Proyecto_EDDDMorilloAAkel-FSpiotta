@@ -136,6 +136,7 @@ public class InterfazGestionStock extends javax.swing.JFrame {
         });
         getContentPane().add(MostrarTodoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
+        TextAreaMostrarTodo.setEditable(false);
         TextAreaMostrarTodo.setBackground(new java.awt.Color(204, 204, 204));
         TextAreaMostrarTodo.setColumns(20);
         TextAreaMostrarTodo.setRows(5);
